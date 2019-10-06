@@ -13,7 +13,7 @@ document.getElementById('form_button').addEventListener('click', function(){
 </script>
 ```
 
-TD Survey transmit values of the form to TreasureData by calling `trackEvent` method. The data is available in `td_survey_result` column in the specified table.
+TD Survey transmit values of the form to TreasureData by calling `trackEvent` method. The data is available in `survey_result` column in the specified table.
 This mechanism is not good at security so do not send PII or any sensitive information by this code.
 
 ## Special Thanks
@@ -36,7 +36,7 @@ document.getElementById('form_button').addEventListener('click', function(){
 </script>
 ```
 
-TD Survey はフォームの値を `trackEvent` メソッドを呼び出すことで送信しています。データは指定したテーブルのカラム `td_survey_result` で利用可能です。
+TD Survey はフォームの値を `trackEvent` メソッドを呼び出すことで送信しています。データは指定したテーブルのカラム `survey_result` で利用可能です。
 この仕組みはセキュリティ的には優れていないため、個人情報やセンシティブな情報をこのコードで送信しないでください。
 
 
