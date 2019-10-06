@@ -4,8 +4,8 @@ var tdSurvey = {
         optionTags = elm.getElementsByTagName('option');
         textAreas = elm.getElementsByTagName('textarea');
         resultObj = {
-            'td_survey_name': name,
-            'td_survey_result': {}
+            'survey_name': name,
+            'survey_result': {}
         };
         if (inputTags.length > 0) {
             for (var i = 0; i < inputTags.length; i++) {
@@ -13,14 +13,14 @@ var tdSurvey = {
                 var val = inputTags[i].value;
                 if (inputTags[i].type === 'radio' || inputTags[i].type === 'checkbox') {
                     if (inputTags[i].checked) {
-                        if (!resultObj['td_survey_result'][key]) {
-                            resultObj['td_survey_result'][key] = {};
+                        if (!resultObj['survey_result'][key]) {
+                            resultObj['survey_result'][key] = {};
                         }
-                        resultObj['td_survey_result'][key][val] = true;
+                        resultObj['survey_result'][key][val] = true;
                     }
                 } else if (inputTags[i].type === 'text' || inputTags[i].type === 'date') {
                     if (val.length > 0) {
-                        resultObj['td_survey_result'][key] = val;
+                        resultObj['survey_result'][key] = val;
                     }
                 }
             }
@@ -30,7 +30,7 @@ var tdSurvey = {
                 var key = optionTags[i].parentNode.name;
                 var val = optionTags[i].value;
                 if (optionTags[i].selected) {
-                    resultObj['td_survey_result'][key] = val;
+                    resultObj['survey_result'][key] = val;
                 }
             }
         }
@@ -39,7 +39,7 @@ var tdSurvey = {
                 var key = textAreas[i].name;
                 var val = textAreas[i].value;
                 if (val.length > 0) {
-                    resultObj['td_survey_result'][key] = val;
+                    resultObj['survey_result'][key] = val;
                 }
             }
         }
