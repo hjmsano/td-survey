@@ -1,11 +1,11 @@
-var ingestlySurvey = {
+var tdSurvey = {
     buildResult: function (name, elm) {
         inputTags = elm.getElementsByTagName('input');
         optionTags = elm.getElementsByTagName('option');
         textAreas = elm.getElementsByTagName('textarea');
         resultObj = {
-            'survey_name': name,
-            'survey_result': {}
+            'td_survey_name': name,
+            'td_survey_result': {}
         };
         if (inputTags.length > 0) {
             for (var i = 0; i < inputTags.length; i++) {
@@ -13,14 +13,14 @@ var ingestlySurvey = {
                 var val = inputTags[i].value;
                 if (inputTags[i].type === 'radio' || inputTags[i].type === 'checkbox') {
                     if (inputTags[i].checked) {
-                        if (!resultObj['survey_result'][key]) {
-                            resultObj['survey_result'][key] = {};
+                        if (!resultObj['td_survey_result'][key]) {
+                            resultObj['td_survey_result'][key] = {};
                         }
-                        resultObj['survey_result'][key][val] = true;
+                        resultObj['td_survey_result'][key][val] = true;
                     }
                 } else if (inputTags[i].type === 'text' || inputTags[i].type === 'date') {
                     if (val.length > 0) {
-                        resultObj['survey_result'][key] = val;
+                        resultObj['td_survey_result'][key] = val;
                     }
                 }
             }
@@ -30,7 +30,7 @@ var ingestlySurvey = {
                 var key = optionTags[i].parentNode.name;
                 var val = optionTags[i].value;
                 if (optionTags[i].selected) {
-                    resultObj['survey_result'][key] = val;
+                    resultObj['td_survey_result'][key] = val;
                 }
             }
         }
@@ -39,16 +39,14 @@ var ingestlySurvey = {
                 var key = textAreas[i].name;
                 var val = textAreas[i].value;
                 if (val.length > 0) {
-                    resultObj['survey_result'][key] = val;
+                    resultObj['td_survey_result'][key] = val;
                 }
             }
         }
         return resultObj;
     },
-    submitResult: function (name, elm) {
+    submitResult: function (table, name, elm) {
         var result = this.buildResult(name, elm);
-        ingestly.trackAction('answer', 'survey', {
-            custom_attr: result
-        });
+        td.trackEvent(table, result);
     }
 };
