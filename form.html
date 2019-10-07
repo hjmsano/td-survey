@@ -36,9 +36,6 @@
             </form>
         </div>
     </div>
-    <footer id="footer" style="clear: both;">
-        <p>Copyright</p>
-    </footer>
 </div>
 
 <!-- Standard TD-JS-SDK implementation -->
@@ -65,7 +62,13 @@
 <!-- Add Event Listener to the submit button -->
 <script>
 document.getElementById('form_button').addEventListener('click', function(){
+
+  // Send the result to Treasure Data
   tdSurvey.submitResult('survey_td', 'Simple Form', document.getElementById('simple_form'), false);
+
+  // Diactivate the form
+  document.getElementById('simple_form').innerHTML = '<p style="font-weight: bold; color: #04cc04">Thank you!</p>';
+
 }, false);
 </script>
 
