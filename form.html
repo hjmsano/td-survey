@@ -50,8 +50,8 @@
   // Configure an instance for your database
   var td = new Treasure({
     host: 'in.treasuredata.com',
-    writeKey: '3867/f9a8e6b52f40bcfa36b21ec5e193eb4f20d633c2',
-    database: 'hsano_db'
+    writeKey: 'YOUR_WRITE_KEY',
+    database: 'TABLE_NAME'
   });
   // Enable cross-domain tracking
   td.set('$global', 'td_global_id', 'td_global_id');
@@ -65,7 +65,7 @@
 <!-- Add Event Listener to the submit button -->
 <script>
 document.getElementById('form_button').addEventListener('click', function(){
-  tdSurvey.submitResult('survey_td', 'Simple Form', document.getElementById('simple_form'), true);
+  tdSurvey.submitResult('survey_td', 'Simple Form', document.getElementById('simple_form'), false);
 }, false);
 </script>
 
